@@ -1,0 +1,7 @@
+test:
+  summary: go test all
+  command: |
+    cd $GOPATH/src/sandbox
+    dep ensure
+    ls -F | grep / | grep -v vendor | awk '{system("go test sandbox/" $0)}'
+    cd $GOPATH
