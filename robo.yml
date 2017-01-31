@@ -1,7 +1,11 @@
-test:
-  summary: go test all
+init:
+  summary: dep initialize
   command: |
     cd $GOPATH/src/sandbox
     dep ensure
-    ls -F | grep / | grep -v vendor | awk '{system("go test sandbox/" $0)}'
     cd $GOPATH
+
+test:
+  summary: go test all (note; previous execute go init)
+  command: |
+    ls -F ./src/sandbox | grep / | grep -v vendor | awk '{system("go test sandbox/" $0)}'
