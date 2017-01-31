@@ -9,3 +9,17 @@ test:
   summary: go test all (note; previous execute go init)
   command: |
     ls -F ./src/sandbox | grep / | grep -v vendor | awk '{system("go test sandbox/" $0)}'
+
+build:
+  summary: go build main package
+  command: |
+    ls -F ./src/sandbox | grep / | grep main | \
+      awk '{system("go build -v -o ./bin/main sandbox/" $0)}'
+
+buildRun:
+  summary: go build and run
+  command: |
+    echo "== start build =="
+    robo build
+    echo "== end build ==\n"
+    ./bin/main

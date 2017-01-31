@@ -19,4 +19,6 @@ $ go get github.com/tj/robo
 ```
 $ robo init
 $ robo test
+$ robo build
+$ robo buildRun
 ```
